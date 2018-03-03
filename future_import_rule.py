@@ -49,7 +49,7 @@ class FutureDivisionRule(FutureImportRule):
 
 class FutureImportsRule(CompountLintNodeRule):
     def __init__(self):
-        super(FutureImportsRule, self).__init__((
+        super(FutureImportsRule, self).__init__([
             FuturePrintFunctionRule(),
             FutureDivisionRule(),
-        ))
+        ])

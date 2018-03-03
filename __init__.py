@@ -1,4 +1,8 @@
+from dictionary_methods_rule import DictionaryMethodsRule
 from forbidden_attribute_rule import ForbiddenAttributeRule, ForbiddenItertoolsRule
 from forbidden_builtins_rule import ForbiddenBuiltinRule, ForbiddenBuiltinsRule
 from future_import_rule import FutureImportRule, FuturePrintFunctionRule, FutureDivisionRule, FutureImportsRule
-from simple_rules import DictionaryMethodsRule, RaiseRule, TupleUnpackingRule, LongSuffixRule
+from lint_node_rule import BaseLintNodeRule, CompountLintNodeRule, LintNodeRule
+from long_suffix_rule import LongSuffixRule
+from raise_rule import RaiseRule
+from tuple_unpacking_rule import TupleUnpackingRule
