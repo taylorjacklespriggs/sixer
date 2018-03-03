@@ -1,6 +1,6 @@
 import ast
 
-from lint_node_rule import LintNodeRule
+from sixer.rules.lint_node_rule import LintNodeRule
 
 class RaiseRule(LintNodeRule):
     def _get_problem_message(self, node):

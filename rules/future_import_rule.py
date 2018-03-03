@@ -1,9 +1,10 @@
 import ast
 
-from lint_node_rule import CompountLintNodeRule, LintNodeRule
+from sixer.rules.lint_node_rule import CompoundLintNodeRule, LintNodeRule
 
 class FutureImportRule(LintNodeRule):
     def __init__(self, future_import):
+        super(FutureImportRule, self).__init__()
         self.future_import = future_import
         self.did_import_future = False
 
@@ -39,7 +40,7 @@ class FuturePrintFunctionRule(FutureImportRule):
 
 class FutureDivisionRule(FutureImportRule):
     def __init__(self):
-        super(FuturePrintFunctionRule, self).__init__('print_function')
+        super(FutureDivisionRule, self).__init__('print_function')
 
     def _get_problem_message(self, node):
         return "division with no `from __future__ import division`"
@@ -47,7 +48,7 @@ class FutureDivisionRule(FutureImportRule):
     def _is_conflicting_future_node(self, node):
         return isinstance(node, ast.BinOp) and isinstance(node.op, ast.Div)
 
-class FutureImportsRule(CompountLintNodeRule):
+class FutureImportsRule(CompoundLintNodeRule):
     def __init__(self):
         super(FutureImportsRule, self).__init__([
             FuturePrintFunctionRule(),

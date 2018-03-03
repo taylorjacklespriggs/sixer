@@ -1,6 +1,6 @@
 import ast
 
-from lint_node_rule import LintNodeRule, CompoundLintNodeRule
+from sixer.rules.lint_node_rule import LintNodeRule, CompoundLintNodeRule
 
 class Python2MetaclassRule(LintNodeRule):
     def _get_problem_message(self, node):

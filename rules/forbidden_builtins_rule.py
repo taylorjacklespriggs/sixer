@@ -1,7 +1,10 @@
-from lint_node_rule import CompoundLintNodeRule, LintNodeRule
+import ast
+
+from sixer.rules.lint_node_rule import CompoundLintNodeRule, LintNodeRule
 
 class ForbiddenBuiltinRule(LintNodeRule):
     def __init__(self, forbidden, alternative):
+        super(ForbiddenBuiltinRule, self).__init__()
         self.forbidden = forbidden
         self.name_nodes = []
         self.problem_message = "builtin `{}` is not allowed, use `{}` instead".format(forbidden, alternative)

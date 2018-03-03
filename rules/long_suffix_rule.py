@@ -1,6 +1,7 @@
 import ast
+import re
 
-from lint_node_rule import LintNodeRule
+from sixer.rules.lint_node_rule import LintNodeRule
 
 class LongSuffixRule(LintNodeRule):
     def __init__(self, lines):

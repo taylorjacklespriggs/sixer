@@ -1,6 +1,6 @@
 import ast
 
-from lint_node_rule import LintNodeRule, CompoundLintNodeRule
+from sixer.rules.lint_node_rule import LintNodeRule, CompoundLintNodeRule
 
 class ForbiddenAttributeRule(LintNodeRule):
     def __init__(self, module, attribute, alternative):
