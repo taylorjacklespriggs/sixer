@@ -1,4 +1,5 @@
 import ast
+import six
 
 from sixer.rules.lint_node_rule import LintNodeRule, CompoundLintNodeRule
 
@@ -16,6 +17,8 @@ class Python2MetaclassRule(LintNodeRule):
         )
 
 class Python3MetaclassRule(LintNodeRule):
+    is_valid = six.PY3
+
     def _get_problem_message(self, node):
         return "using `metaclass` class keyword, use the `six.add_metaclass` decorator instead"
 
@@ -24,6 +27,9 @@ class Python3MetaclassRule(LintNodeRule):
             kw.arg == 'metaclass' for kw in getattr(node, 'keywords', [])
         )
 
-class MetaclassRule(CompoundNodeLintRule):
+class MetaclassRule(CompoundLintNodeRule):
     def __init__(self):
-        super(MetaclassRule, self).__init__([Python2MetaclassRule, Python3MetaclassRule])
+        super(MetaclassRule, self).__init__([
+            Python2MetaclassRule(),
+            Python3MetaclassRule(),
+        ])

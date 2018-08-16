@@ -36,7 +36,7 @@ class CompoundLintNodeRule(BaseLintNodeRule):
         for rule in self.rules:
             try:
                 rule.check_node(node)
-            except NotImplementedError:
+            except:
                 print(rule)
                 raise
 

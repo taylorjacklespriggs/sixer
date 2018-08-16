@@ -1,9 +1,12 @@
 import ast
 import re
+import six
 
 from sixer.rules.lint_node_rule import LintNodeRule
 
 class LongSuffixRule(LintNodeRule):
+    is_valid = six.PY2
+
     def __init__(self, lines):
         super(LongSuffixRule, self).__init__()
         self.lines = lines
