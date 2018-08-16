@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from sixer.__main__ import main, sys
 
 sys.exit(main())
