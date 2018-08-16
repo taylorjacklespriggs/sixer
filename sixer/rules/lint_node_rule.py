@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 class BaseLintNodeRule(object):
     def check_node(self, node):
         raise NotImplemented
