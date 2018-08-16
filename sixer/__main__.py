@@ -8,11 +8,19 @@ def valid_file(filename):
     return filename.endswith('.py') and os.path.isfile(filename)
 
 def all_paths(path):
-    for dirpath, _, filenames in os.walk(path):
-        for filename in filenames:
-            full_filename = os.path.join(dirpath, filename)
-            if valid_file(full_filename):
-                yield full_filename
+    if os.path.isdir(path):
+        for dirpath, _, filenames in os.walk(path):
+            for filename in filenames:
+                full_filename = os.path.join(dirpath, filename)
+                if valid_file(full_filename):
+                    yield full_filename
+    else:
+        if valid_file(path):
+            yield path
+        else:
+            raise Exception(
+                "The provided argument {} is not a python file".format(path)
+            )
 
 def all_files(paths):
     for path in paths:
