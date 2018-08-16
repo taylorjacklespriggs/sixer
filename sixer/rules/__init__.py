@@ -10,16 +10,20 @@ from sixer.rules.safe_iterator_rule import ReturnIteratorRule, ReturnIteratorsRu
 from sixer.rules.tuple_unpacking_rule import TupleUnpackingRule
 
 def prepare_all_rules(source):
-    for BasicRule in [
-        AddIteratorsRule,
-        DictionaryMethodsRule,
-        ForbiddenItertoolsRule,
-        ForbiddenBuiltinsRule,
-        FutureImportsRule,
-        ProhibitedImportsRule,
-        RaiseRule,
-        ReturnIteratorsRule,
-        TupleUnpackingRule,
-    ]:
-        yield BasicRule()
-    yield LongSuffixRule(source.split('\n'))
+
+    def get_rules():
+        for BasicRule in [
+            AddIteratorsRule,
+            DictionaryMethodsRule,
+            ForbiddenItertoolsRule,
+            ForbiddenBuiltinsRule,
+            FutureImportsRule,
+            ProhibitedImportsRule,
+            RaiseRule,
+            ReturnIteratorsRule,
+            TupleUnpackingRule,
+        ]:
+            yield BasicRule()
+        yield LongSuffixRule(source.splitlines())
+
+    return [rule for rule in get_rules() if rule.is_valid]

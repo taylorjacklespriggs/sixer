@@ -1,6 +1,8 @@
 from __future__ import print_function
 
 class BaseLintNodeRule(object):
+    is_valid = True
+
     def check_node(self, node):
         raise NotImplemented
 
@@ -27,7 +29,8 @@ class LintNodeRule(BaseLintNodeRule):
 
 class CompoundLintNodeRule(BaseLintNodeRule):
     def __init__(self, rules):
-        self.rules = rules
+        self.rules = [rule for rule in rules if rule.is_valid]
+        self.is_valid = bool(self.rules)
 
     def check_node(self, node):
         for rule in self.rules:

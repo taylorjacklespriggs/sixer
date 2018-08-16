@@ -12,7 +12,7 @@ def print_problem(source_name, lineno, col_offset, message):
 def check_file(source_name):
     with open(source_name, 'r') as source_file:
         raw_source = source_file.read()
-    all_lint_node_rules = list(prepare_all_rules(raw_source))
+    all_lint_node_rules = prepare_all_rules(raw_source)
     try:
         tree = ast.parse(raw_source, source_name)
     except SyntaxError as se:
