@@ -1,8 +1,11 @@
 import ast
+import six
 
 from sixer.rules.lint_node_rule import LintNodeRule
 
 class TupleUnpackingRule(LintNodeRule):
+    is_valid = six.PY2
+
     def _get_problem_message(self, node):
         return "tuple parameter unpacking not allowed, see PEP 3113"
 
