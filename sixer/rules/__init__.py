@@ -9,7 +9,7 @@ from sixer.rules.metaclass_rule import MetaclassRule
 from sixer.rules.prohibited_import_rule import ProhibitedImportRule, ProhibitedImportsRule
 from sixer.rules.raise_rule import ReraiseRule, RaiseFromRule
 from sixer.rules.safe_iterator_rule import ReturnIteratorRule, ReturnIteratorsRule, AddOperandIteratorRule, AddIteratorRule, AddIteratorsRule
-from sixer.rules.tuple_unpacking_rule import TupleUnpackingRule
+from sixer.rules.unpacking_rule import TupleUnpackingRule
 
 def prepare_all_rules(source):
 
