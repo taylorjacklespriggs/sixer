@@ -3,7 +3,7 @@ from sixer.rules.forbidden_attribute_rule import ForbiddenAttributeRule, Forbidd
 from sixer.rules.forbidden_builtins_rule import ForbiddenBuiltinRule, ForbiddenBuiltinsRule
 from sixer.rules.fsl_rule import FormattedStringLiteralRule
 from sixer.rules.future_import_rule import FutureImportRule, FuturePrintFunctionRule, FutureDivisionRule, FutureImportsRule
-from sixer.tules.keywork_rule import KeywordOnlyRule
+from sixer.rules.keywork_rule import KeywordOnlyRule
 from sixer.rules.lint_node_rule import BaseLintNodeRule, CompoundLintNodeRule, LintNodeRule
 from sixer.rules.long_suffix_rule import LongSuffixRule
 from sixer.rules.metaclass_rule import MetaclassRule
