@@ -11,4 +11,7 @@ class KeywordOnlyRule(LintNodeRule):
         return "keywords only arguments not allowed"
 
     def _is_problem_node(self, node):
-        return isinstance(node, ast.arguments) and node.kwonlyargs
+        return (
+            isinstance(node, (ast.FunctionDef, ast.Lambda))
+            and node.args.kwonlyargs
+        )
