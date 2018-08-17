@@ -33,9 +33,9 @@ class KwargUnpackingRule(LintNodeRule):
         return "unpacking of multiple keyword arguments is not allowed"
 
     def _is_problem_node(self, node):
-        return isinstance(node, ast.Call) and any(
-            kw.arg is None for kw in node.keywords
-        )
+        return isinstance(node, ast.Call) and len([
+            kw for kw in node.keywords if kw.arg is None
+        ]) > 1
 
 
 class TupleUnpackingRule(LintNodeRule):
