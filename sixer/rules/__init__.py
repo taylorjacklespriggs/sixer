@@ -10,7 +10,7 @@ from sixer.rules.metaclass_rule import MetaclassRule
 from sixer.rules.prohibited_import_rule import ProhibitedImportRule, ProhibitedImportsRule
 from sixer.rules.raise_rule import ReraiseRule, RaiseFromRule
 from sixer.rules.safe_iterator_rule import ReturnIteratorRule, ReturnIteratorsRule, AddOperandIteratorRule, AddIteratorRule, AddIteratorsRule
-from sixer.rules.unpacking_rule import DictionaryUnpackingRule, IterableUnpackingRule, TupleUnpackingRule
+from sixer.rules.unpacking_rule import DictionaryUnpackingRule, IterableUnpackingRule, KwargUnpackingRule, TupleUnpackingRule
 
 def prepare_all_rules(source):
 
@@ -25,6 +25,7 @@ def prepare_all_rules(source):
             FutureImportsRule,
             IterableUnpackingRule,
             KeywordOnlyRule,
+            KwargUnpackingRule,
             MetaclassRule,
             ProhibitedImportsRule,
             RaiseFromRule,

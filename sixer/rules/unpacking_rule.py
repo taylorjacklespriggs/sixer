@@ -26,6 +26,18 @@ class IterableUnpackingRule(LintNodeRule):
         )
 
 
+class KwargUnpackingRule(LintNodeRule):
+    is_valid = six.PY3
+
+    def _get_problem_message(self, node):
+        return "unpacking of multiple keyword arguments is not allowed"
+
+    def _is_problem_node(self, node):
+        return isinstance(node, ast.Call) and any(
+            kw.arg is None for kw in node.keywords
+        )
+
+
 class TupleUnpackingRule(LintNodeRule):
     is_valid = six.PY2
 
