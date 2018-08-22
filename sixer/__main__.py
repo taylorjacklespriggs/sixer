@@ -27,12 +27,12 @@ def all_files(paths):
         for filename in all_paths(path):
             yield filename
 
-def main():
+def main(rules=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('file', nargs='+', help="Files to check")
     args = parser.parse_args()
     source_names = all_files(args.file)
-    if any([check_file(source_name) for source_name in source_names]):
+    if any([check_file(source_name, rules=rules) for source_name in source_names]):
         exit_code = 1
     else:
         exit_code = 0
