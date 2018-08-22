@@ -13,27 +13,23 @@ from sixer.rules.safe_iterator_rule import ReturnIteratorRule, ReturnIteratorsRu
 from sixer.rules.unpacking_rule import DictionaryUnpackingRule, IterableUnpackingRule, KwargUnpackingRule, TupleUnpackingRule
 
 def prepare_all_rules(source):
-
-    def get_rules():
-        for BasicRule in [
-            AddIteratorsRule,
-            DictionaryMethodsRule,
-            DictionaryUnpackingRule,
-            ForbiddenItertoolsRule,
-            ForbiddenBuiltinsRule,
-            FormattedStringLiteralRule,
-            FutureImportsRule,
-            IterableUnpackingRule,
-            KeywordOnlyRule,
-            KwargUnpackingRule,
-            MetaclassRule,
-            ProhibitedImportsRule,
-            RaiseFromRule,
-            ReraiseRule,
-            ReturnIteratorsRule,
-            TupleUnpackingRule,
-        ]:
-            yield BasicRule()
-        yield LongSuffixRule(source.splitlines())
-
-    return [rule for rule in get_rules() if rule.is_valid]
+    for BasicRule in [
+        AddIteratorsRule,
+        DictionaryMethodsRule,
+        DictionaryUnpackingRule,
+        ForbiddenItertoolsRule,
+        ForbiddenBuiltinsRule,
+        FormattedStringLiteralRule,
+        FutureImportsRule,
+        IterableUnpackingRule,
+        KeywordOnlyRule,
+        KwargUnpackingRule,
+        MetaclassRule,
+        ProhibitedImportsRule,
+        RaiseFromRule,
+        ReraiseRule,
+        ReturnIteratorsRule,
+        TupleUnpackingRule,
+    ]:
+        yield BasicRule()
+    yield LongSuffixRule(source.splitlines())

@@ -9,10 +9,14 @@ def print_problem(source_name, lineno, col_offset, message):
     print("{}:{}:{}: {}".format(source_name, lineno, col_offset, message))
 
 
-def check_file(source_name):
+def check_file(source_name, rules=None):
     with open(source_name, 'r') as source_file:
         raw_source = source_file.read()
-    all_lint_node_rules = prepare_all_rules(raw_source)
+    if rules is None:
+        all_lint_node_rules = prepare_all_rules(raw_source)
+    else:
+        all_lint_node_rules = rules
+    all_lint_node_rules = [rule for rule in all_lint_node_rules if rule.is_valid]
     try:
         tree = ast.parse(raw_source, source_name)
     except SyntaxError as se:
